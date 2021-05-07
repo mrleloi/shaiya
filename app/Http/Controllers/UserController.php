@@ -19,11 +19,11 @@ class UserController extends Controller
     {
         if (!Auth::guard('web')->check()) return redirect()->route('dang-nhap');
         if (!($request->get('current-password') == Auth::guard('web')->user()->{User::password()})) {
-            return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
+            return redirect()->back()->with("error", __('Your current password does not matches with the password you provided. Please try again.'));
         }
 
         if (strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
-            return redirect()->back()->with("error", "New Password cannot be same as your current password. Please choose a different password.");
+            return redirect()->back()->with("error", __('New Password cannot be same as your current password. Please choose a different password.'));
         }
 
         $validatedData = $request->validate([
@@ -38,7 +38,7 @@ class UserController extends Controller
 
         return redirect()
             ->back()
-            ->with("success", "Password changed successfully !");
+            ->with("success", __('Password changed successfully!'));
     }
 
     public function changeEmail()
@@ -52,11 +52,11 @@ class UserController extends Controller
         if (!Auth::guard('web')->check()) return redirect()->route('dang-nhap');
         $userDetail = Auth::guard('web')->user()->userDetail;
         if (!($request->get('current-email') == $userDetail->Email)) {
-            return redirect()->back()->with("error","Your current email does not matches with the email you provided. Please try again.");
+            return redirect()->back()->with("error",__('Your current email does not matches with the email you provided. Please try again.'));
         }
 
         if(strcmp($request->get('current-email'), $request->get('new-email')) == 0){
-            return redirect()->back()->with("error","New Email cannot be same as your current email. Please choose a different email.");
+            return redirect()->back()->with("error",__('New Email cannot be same as your current email. Please choose a different email.'));
         }
 
         $validatedData = $request->validate([
@@ -69,6 +69,6 @@ class UserController extends Controller
 
         return redirect()
             ->back()
-            ->with("success","Email changed successfully !");
+            ->with("success",__('Email changed successfully!'));
     }
 }

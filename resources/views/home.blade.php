@@ -26,8 +26,8 @@
                     </span>
                         <a href="javascript:void(0)" onclick="toggleView(this, 'post-{{ $post->id }}')"
                            class="nice_button meta_info post_readmore overflow_ellipsis vertical_center align_center">
-                            <span class="rm" style="">Read more</span>
-                            <span class="rl" style="display: none;">Read less</span>
+                            <span class="rm" style="">{{ __('Read more') }}</span>
+                            <span class="rl" style="display: none;">{{ __('Read less') }}</span>
                         </a>
                     </div>
                 </div>
@@ -88,8 +88,8 @@
                     </span>
                             <a href="javascript:void(0)" onclick="toggleView(this, 'post-{{ $post->id }}')"
                                class="nice_button meta_info post_readmore overflow_ellipsis vertical_center align_center">
-                                <span class="rm" style="">Xem thêm</span>
-                                <span class="rl" style="display: none;">Thu nhỏ</span>
+                                <span class="rm" style="">{{ __('Read more') }}</span>
+                                <span class="rl" style="display: none;">{{ __('Read less') }}</span>
                             </a>
                         </div>
                     </div>

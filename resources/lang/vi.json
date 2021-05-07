@@ -192,5 +192,18 @@
     "You may delete any of your existing tokens if they are no longer needed.": "Bạn có thể xóa bất kỳ token hiện có nào của mình nếu chúng không còn cần thiết.",
     "You may not delete your personal team.": "Bạn không thể xóa nhóm cá nhân của mình.",
     "You may not leave a team that you created.": "Bạn không được rời khỏi nhóm mà bạn đã tạo.",
-    "Your email address is not verified.": "Email của bạn chưa được xác minh."
+    "Your email address is not verified.": "Email của bạn chưa được xác minh.",
+    "Change Password": "Đổi mật khẩu",
+    "Confirm New Password": "Nhập lại mật khẩu mới",
+    "Change email": "Đổi email",
+    "Current email": "Email hiện tại",
+    "New email": "Email mới",
+    "Your current password does not matches with the password you provided. Please try again.": "Mật khẩu cũ không chính xác.",
+    "New Password cannot be same as your current password. Please choose a different password.": "Mật khẩu mới không được trùng với mật khẩu cũ.",
+    "Password changed successfully!": "Thay đổi mật khẩu thành công!",
+    "Your current email does not matches with the email you provided. Please try again.": "Email cũ không chính xác.",
+    "New Email cannot be same as your current email. Please choose a different email.": "Email mới không được trùng với email cũ.",
+    "Email changed successfully!": "Thay đổi email thành công!",
+    "Read more": "Xem thêm",
+    "Read less": "Thu nhỏ"
 }

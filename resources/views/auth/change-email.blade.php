@@ -30,8 +30,7 @@
 
                                         <div
                                             class="form-group{{ $errors->has('current-email') ? ' has-error' : '' }}">
-                                            <label for="Email" class="col-md-4 control-label">Current
-                                                email</label>
+                                            <label for="Email" class="col-md-4 control-label">{{ __('Current email') }}</label>
 
                                             <div class="col-md-6">
                                                 <input id="current-email" type="email" class="form-control"
@@ -46,8 +45,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('Email') ? ' has-error' : '' }}">
-                                            <label for="Email" class="col-md-4 control-label">New
-                                                email</label>
+                                            <label for="Email" class="col-md-4 control-label">{{ __('New email') }}</label>
 
                                             <div class="col-md-6">
                                                 <input id="Email" type="email" value="{{ old('Email') }}" class="form-control"
@@ -64,7 +62,7 @@
                                         <div class="form-group" style="margin-top: 20px;text-align: center;">
                                             <div class="col-md-6 col-md-offset-4">
                                                 <button type="submit" class="nice_button">
-                                                    Change email
+                                                    {{ __('Change email') }}
                                                 </button>
                                             </div>
                                         </div>
