@@ -48,10 +48,11 @@ class PostNewController extends Controller
         return redirect()->route('admin.post-news.index');
     }
 
-    public function edit(PostNew $postNew)
+    public function edit($id)
     {
         abort_if(Gate::denies('post_new_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-//        dd($postNew->title);
+
+        $postNew = PostNew::findOrFail($id);
 
         return view('admin.postNews.edit', compact('postNew'));
     }
@@ -81,10 +82,11 @@ class PostNewController extends Controller
         return view('admin.postNews.show', compact('postNew'));
     }
 
-    public function destroy(PostNew $postNew)
+    public function destroy($id)
     {
         abort_if(Gate::denies('post_new_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $postNew = PostNew::findOrFail($id);
         $postNew->delete();
 
         return back();

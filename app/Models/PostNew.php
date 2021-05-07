@@ -15,7 +15,6 @@ class PostNew extends Model implements HasMedia
     use HasMediaTrait;
 
     public $table = 'post_news';
-    public $guarded = [];
 
     protected $appends = [
         'icon_url',

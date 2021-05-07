@@ -48,9 +48,10 @@ class PostEventController extends Controller
         return redirect()->route('admin.post-events.index');
     }
 
-    public function edit(PostEvent $postEvent)
+    public function edit(PostEvent $postEvent, Request $request)
     {
         abort_if(Gate::denies('post_event_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        dd($postEvent);
 
         return view('admin.postEvents.edit', compact('postEvent'));
     }
