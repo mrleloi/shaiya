@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginFailRequest;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -53,7 +54,6 @@ class LoginController extends Controller
             $this->username() => 'required|string',
             $this->password() => 'required|string',
         ]);
-
         if ($validator->fails()) {
             throw ValidationException::withMessages([
                 $this->username() => [trans('auth.failed')],
