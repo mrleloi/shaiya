@@ -23,9 +23,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
                         href="{{ $settingDownload->link_mega }}"
                         target="_blank"><img src="images/down.png" border="0"></a>
-                    <br><br><br>
-                    <font color="yellow" size="3">&nbsp;&nbsp;&nbsp;&nbsp;Hướng dẫn tải game:</font>
-                    <br><br>
+                    <br>
                 </div>
             </div>
         </div>
