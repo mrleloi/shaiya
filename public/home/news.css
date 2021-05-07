@@ -170,7 +170,7 @@
     line-height: 100%;
     font-family: 'PT Sans';
     vertical-align: middle;
-    
+
 }
 
 .post .post-inner .post-right .post_header .meta_info a {
@@ -179,7 +179,7 @@
 }
 
 .post .post-inner .post-right .post_header .post_title {
-    width: 60%
+    width: calc(100% - 100px);
 }
 
 .post .post-inner .post-right .post_header .post_title a {
@@ -195,7 +195,10 @@
     max-width: 33%;
     margin: 0 0 0 9px;
     padding: 0 0 0 10px;
-    border-left: 1px #242424 solid
+    border-left: 1px #242424 solid;
+    position: absolute;
+    right: 160px;
+    top: 30px;
 }
 
 .post .post-inner .post-right .post_header .post_author * {
