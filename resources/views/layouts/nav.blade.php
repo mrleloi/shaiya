@@ -44,7 +44,7 @@
     </section>
 
     <section class="sidebox_topvoters topvoter sidebox" style="margin-bottom: 15px; padding-bottom: 20px; margin-top: 15px;">
-        <div class="card left-row">
+        <div class="card left-row" style="height: 111px;">
             <a href="{{ route('nap-the') }}" title="Nạp thẻ" class="nap-tien"></a>
         </div>
     </section>

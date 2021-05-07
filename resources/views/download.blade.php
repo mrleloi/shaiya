@@ -26,13 +26,6 @@
                     <br><br><br>
                     <font color="yellow" size="3">&nbsp;&nbsp;&nbsp;&nbsp;Hướng dẫn tải game:</font>
                     <br><br>
-                    <div class="menu" style="text-align: left; display: block;">
-                        <p>
-                            <iframe width="650" height="315" src="https://www.youtube.com/embed/n5NYuLra6dg"
-                                    frameborder="0" allowfullscreen=""></iframe>
-                        </p>
-                    </div>
-                    <br><br>
                 </div>
             </div>
         </div>
