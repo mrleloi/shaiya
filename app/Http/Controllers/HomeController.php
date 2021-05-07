@@ -21,7 +21,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        if ($this->setting->num_display) {
+        if ($this->setting->num_news_display) {
             $postNews = PostNew::query()->where([
                 'status' => Helper::$STATUS_ON
             ])
@@ -31,7 +31,7 @@ class HomeController extends Controller
         } else {
             $postNews = collect();
         }
-        if ($this->setting->num_display) {
+        if ($this->setting->num_events_display) {
             $postEvents = PostEvent::query()
                 ->where([
                     'status' => Helper::$STATUS_ON
