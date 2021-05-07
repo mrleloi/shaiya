@@ -224,6 +224,10 @@
     background-color: #181818
 }
 
+.post .post-inner .post-right .post_header .post_readmore .rm {
+    top: 5px;
+}
+
 .post .post-inner .post-right .post_header .post_readmore span:after {
     color: inherit;
     margin: 0 0 0 4px;
@@ -234,7 +238,8 @@
 }
 
 .post .post-inner .post-right .post_header .post_readmore span.rm:after {
-    content: '\002C7'
+    content: '\002C7';
+    top: -2px;
 }
 
 .post .post-inner .post-right .post_header .post_readmore span.rl:after {
