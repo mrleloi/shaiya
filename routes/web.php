@@ -30,13 +30,11 @@ Route::post('quen-mat-khau', 'Auth\ForgotPasswordController@sendResetLinkEmail')
 Route::get('reset-mat-khau/{token}', 'Auth\ResetPasswordController@showResetForm')->name('reset-mat-khau');
 Route::post('reset-mat-khau', 'Auth\ResetPasswordController@reset')->name('action-reset-mat-khau');
 
-Route::middleware(['auth:web'])->group(function () {
-    Route::get('doi-mat-khau','UserController@changePassword')->name('doi-mat-khau');
-    Route::post('doi-mat-khau','UserController@actionChangePassword')->name('action-doi-mat-khau');
+Route::get('doi-mat-khau','UserController@changePassword')->name('doi-mat-khau');
+Route::post('doi-mat-khau','UserController@actionChangePassword')->name('action-doi-mat-khau');
 
-    Route::get('doi-email','UserController@changeEmail')->name('doi-email');
-    Route::post('doi-email','UserController@actionChangeEmail')->name('action-doi-email');
-});
+Route::get('doi-email','UserController@changeEmail')->name('doi-email');
+Route::post('doi-email','UserController@actionChangeEmail')->name('action-doi-email');
 
 // Web Pages
 Route::get('/', 'HomeController@index')->name('home');

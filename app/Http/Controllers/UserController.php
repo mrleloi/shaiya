@@ -9,19 +9,16 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function __construct(Request $request)
-    {
-//        dd($request);
-    }
-
     public function changePassword()
     {
+        if (!Auth::guard('web')->check()) return redirect()->route('dang-nhap');
         return view('auth.change-password');
     }
 
     public function actionChangePassword(Request $request)
     {
-        if (!($request->get('current-password') == Auth::user()->{User::password()})) {
+        if (!Auth::guard('web')->check()) return redirect()->route('dang-nhap');
+        if (!($request->get('current-password') == Auth::guard('web')->user()->{User::password()})) {
             return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
         }
 
@@ -35,7 +32,7 @@ class UserController extends Controller
             'new-password_confirmation' => 'required|string|min:6|max:12|same:new-password',
         ]);
 
-        $user = Auth::user();
+        $user = Auth::guard('web')->user();
         $user->Pw = $request->get('new-password');
         $user->save();
 
@@ -46,12 +43,14 @@ class UserController extends Controller
 
     public function changeEmail()
     {
+        if (!Auth::guard('web')->check()) return redirect()->route('dang-nhap');
         return view('auth.change-email');
     }
 
     public function actionChangeEmail(Request $request)
     {
-        $userDetail = Auth::user()->userDetail;
+        if (!Auth::guard('web')->check()) return redirect()->route('dang-nhap');
+        $userDetail = Auth::guard('web')->user()->userDetail;
         if (!($request->get('current-email') == $userDetail->Email)) {
             return redirect()->back()->with("error","Your current email does not matches with the email you provided. Please try again.");
         }

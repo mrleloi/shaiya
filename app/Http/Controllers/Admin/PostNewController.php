@@ -51,6 +51,7 @@ class PostNewController extends Controller
     public function edit(PostNew $postNew)
     {
         abort_if(Gate::denies('post_new_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        dd($postNew->title);
 
         return view('admin.postNews.edit', compact('postNew'));
     }

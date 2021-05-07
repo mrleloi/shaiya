@@ -64,8 +64,8 @@
                                                     {{ __('Login') }}
                                                 </button>
 
-                                                @if (Route::has('password.request'))
-                                                    <section id="forgot"><a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a></section>
+                                                @if (Route::has('quen-mat-khau'))
+                                                    <section id="forgot"><a href="{{ route('quen-mat-khau') }}">{{ __('Forgot Your Password?') }}</a></section>
                                                 @endif
                                             </div>
                                         </div>
