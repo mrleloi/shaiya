@@ -25,10 +25,14 @@ class ChienTichController extends Controller
             case 2: $lv_from = 16; $lv_to = 30; break;
             case 3: $lv_from = 31; $lv_to = 60; break;
         }
-        $list = PostNew::query()
-            ->whereBetween('status', [$lv_from, $lv_to])
-            ->orderBy('created_at', 'desc')
-            ->paginate($this->setting->num_display);
+        if ($this->setting->num_display) {
+            $list = PostNew::query()
+                ->whereBetween('status', [$lv_from, $lv_to])
+                ->orderBy('created_at', 'desc')
+                ->paginate($this->setting->num_display);
+        } else {
+            $list = collect();
+        }
         return view('chien-tich')
             ->with([
                 'settingChienTich' => $this->setting,

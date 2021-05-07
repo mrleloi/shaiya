@@ -23,10 +23,14 @@ class TopRankController extends Controller
             case 1: $type = 1; break;
             case 2: $type = 2; break;
         }
-        $list = PostNew::query()
-            ->where('status', '=', $type)
-            ->orderBy('created_at', 'desc')
-            ->paginate($this->setting->num_display);
+        if ($this->setting->num_display) {
+            $list = PostNew::query()
+                ->where('status', '=', $type)
+                ->orderBy('created_at', 'desc')
+                ->paginate($this->setting->num_display);
+        } else {
+            $list = collect();
+        }
         return view('top-rank')
             ->with([
                 'settingTopRank' => $this->setting,
