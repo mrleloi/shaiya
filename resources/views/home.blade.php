@@ -11,7 +11,7 @@
 
         @if (!$postNews->isEmpty())
         @foreach ($postNews as $post)
-        <article id="post-{{ $post->id }}" class="post expandable collapsed">
+        <article id="postNews-{{ $post->id }}" class="post expandable collapsed">
             <div class="post-inner">
                 <div class="post-left"
                      style="background-image: url({{ isset($post->icon_url) ? url($post->icon_url->url) : url('/images/default-icon-news.png') }});"></div>
@@ -24,7 +24,7 @@
                         <span class="meta_info post_author overflow_ellipsis">
                          <span class="post_date">{{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y') }}</span>
                     </span>
-                        <a href="javascript:void(0)" onclick="toggleView(this, 'post-{{ $post->id }}')"
+                        <a href="javascript:void(0)" onclick="toggleView(this, 'postNews-{{ $post->id }}')"
                            class="nice_button meta_info post_readmore overflow_ellipsis vertical_center align_center">
                             <span class="rm" style="">{{ __('Read more') }}</span>
                             <span class="rl" style="display: none;">{{ __('Read less') }}</span>
@@ -73,7 +73,7 @@
 
         @if (!$postEvents->isEmpty())
         @foreach ($postEvents as $post)
-            <article id="post-{{ $post->id }}" class="post expandable collapsed">
+            <article id="postEvents-{{ $post->id }}" class="post expandable collapsed">
                 <div class="post-inner">
                     <div class="post-left"
                          style="background-image: url({{ isset($post->icon_url) ? url($post->icon_url->url) : url('/images/default-icon-news.png') }});"></div>
@@ -86,7 +86,7 @@
                             <span class="meta_info post_author overflow_ellipsis">
                          <span class="post_date">{{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y') }}</span>
                     </span>
-                            <a href="javascript:void(0)" onclick="toggleView(this, 'post-{{ $post->id }}')"
+                            <a href="javascript:void(0)" onclick="toggleView(this, 'postEvents-{{ $post->id }}')"
                                class="nice_button meta_info post_readmore overflow_ellipsis vertical_center align_center">
                                 <span class="rm" style="">{{ __('Read more') }}</span>
                                 <span class="rl" style="display: none;">{{ __('Read less') }}</span>
