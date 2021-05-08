@@ -13,14 +13,20 @@ class UserDetail extends Authenticatable
 //    protected $connection = 'mysql_userdata';
     protected $connection = 'sqlsrv_userdata';
 //    protected $table = 'users_detail';
-    protected $table = 'dbo.Users_Detail';
+    protected $table = 'dbo.Users_Master';
     protected $primaryKey = 'UserUID';
     protected $guarded = [];
     public $timestamps = false;
 
-    public function user()
+    protected $appends = ['user'];
+
+    public function getUserAttribute()
     {
-        return $this->belongsTo(User::class, 'UserID', 'UserID');
+        return $this;
+    }
+
+    public function setRememberToken($token) {
+        return false;
     }
 
     public function getEmailForPasswordReset()

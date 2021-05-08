@@ -40,37 +40,41 @@
                         <table class="nice_table" border="0" cellspacing="5" cellpadding="1">
                             <tbody>
                             <tr>
-                                <td width="5%" align="center">Hạng</td>
-                                <td width="20%">Tên Nhân Vật</td>
-                                <td width="150px" align="center">Class</td>
-                                <td width="10%" align="center">Cấp Độ</td>
-                                <td width="15%" align="center">Liên Minh</td>
-                                <td width="15%" align="center">Hội</td>
-                                <td width="200px" align="center">Tiêu Diệt</td>
-                                <td width="200px" align="center">Tử Vong</td>
+                                <th>#</th>
+                                <th>Tên nhân vật</th>
+                                <th>Class</th>
+                                <th>Level</th>
+                                <th>Guild</th>
+                                <th><a href="#K1">Kills</a></th>
+                                <th><a href="#K2">Deaths</a></th>
+                                <th><a href="#KDR">KDR</a></th>
+                                <th>Rank</th>
                             </tr>
 
-                            @foreach ($list as $item)
+                            @foreach ($list as $c)
                                 <tr>
-                                    <td class="center">1</td>
-                                    <td class="orange" style="padding-left: 10px;">BlackEagle</td>
-                                    <td class="center"><img src="https://sh-anubis.com//images/ranking/1.png"></td>
-                                    <td class="center">60</td>
-                                    <td class="center">Phẫn nộ</td>
-                                    <td class="center">FullHouse</td>
-                                    <td class="center">119 228</td>
-                                    <td class="center">4254</td>
+                                    <td class="center">{{ $c->RowIndex }}</td>
+                                    <td class="center">{{ htmlspecialchars($c->CharName) }}</td>
+                                    <td class="center"><span class="{{ $c->Faction }}"><span class="ClassIcon {{ $c->CharClass }}" title="{{ htmlspecialchars($c->CharClass) }}">&nbsp;{{ htmlspecialchars($c->CharClass) }}</span></span></td>
+                                    <td class="center">{{ $c->Level }}</td>
+                                    <td class="center">{{ htmlspecialchars($c->GuildName) }}</td>
+                                    <td class="center">{{ $c->K1 }}</td>
+                                    <td class="center">{{ $c->K2 }}</td>
+                                    <td class="center">{{ isset($c->KDR) ? (intval($c->KDR)*100) : "" }}</td>
+                                    <td class="center">{{ $c->Rank < 10 ? $c->Rank : str_pad($c->Rank,2,0,STR_PAD_LEFT) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </center>
 
+                    @if ($list->hasPages())
                     <div class="news_pagi border_box self_clear">
                         <div class="news_pagi-left">
                             {{ $list->appends(request()->query())->links() }}
                         </div>
                     </div>
+                    @endif
 
                 @else
 

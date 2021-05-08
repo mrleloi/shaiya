@@ -2,15 +2,14 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\CanResetPassword;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, CanResetPassword;
 
 //    protected $connection = 'mysql_userdata';
     protected $connection = 'sqlsrv_userdata';
@@ -19,13 +18,12 @@ class User extends Authenticatable
     protected $primaryKey = 'UserUID';
     protected $guarded = [];
     public $timestamps = false;
-    protected $appends = [
-        'email', 'user_name'
-    ];
 
-    public function userDetail()
+    protected $appends = ['userDetail'];
+
+    public function getUserDetailAttribute()
     {
-        return $this->belongsTo(UserDetail::class, 'UserID', 'UserID');
+        return $this;
     }
 
     public function getAuthPassword()
@@ -45,5 +43,20 @@ class User extends Authenticatable
 
     public function setRememberToken($token) {
         return false;
+    }
+
+    public function getEmailForPasswordReset()
+    {
+        return $this->Email;
+    }
+
+    public function routeNotificationForMail($notification)
+    {
+        return $this->Email;
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new \App\Notifications\ResetPasswordNotification($token));
     }
 }

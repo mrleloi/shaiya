@@ -65,7 +65,7 @@ class RegisterController extends Controller
             'UserID' => ['required', 'string', 'max:255', 'unique:sqlsrv_userdata.Users_Master'],
             'Pw' => ['required', 'string', 'min:6', 'max:12'],
             'Pw_confirm' => ['required', 'string', 'min:6', 'max:12', 'same:Pw'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:sqlsrv_userdata.Users_Detail'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:sqlsrv_userdata.Users_Master'],
         ]);
     }
 
@@ -91,7 +91,7 @@ class RegisterController extends Controller
             'Admin' => 0,
             'AdminLevel' => 0,
             'UseQueue' => 0,
-            'Status' => 16,
+            'Status' => 0,
             'Leave' => 0,
             'LeaveDate' => null,
             'UserType' => 'U',
@@ -101,41 +101,11 @@ class RegisterController extends Controller
             'Point' => 0,
             'Enpassword' => null,
             'Birth' => null,
+            'Email' => $data['email'],
         ]);
         if ($newlyUser) {
-            $newlyUserDetail = UserDetail::create([
-                'UserID' => $data['UserID'],
-                'UserUID' => $newUserUID,
-                'UserName' => $data['UserName'],
-                'SocialNo1' => null,
-                'SocialNo2' => null,
-                'PwQuestion' => '',
-                'PwAnswer' => null,
-                'Email' => $data['email'],
-                'PostNo' => null,
-                'Addr1' => null,
-                'Addr2' => null,
-                'Phone1' => null,
-                'Phone2' => null,
-                'Phone3' => null,
-                'Mobile1' => null,
-                'Mobile2' => null,
-                'Mobile3' => null,
-                'NewsLetter' => 0,
-                'Sms' => 0,
-                'AdultAuth' => 0,
-                'AdultAuthDate' => null,
-                'EmailAuth' => 0,
-                'EmailAuthKey' => null,
-                'Job' => null,
-                'JobNo' => null,
-                'LocalNo' => null,
-                'PwQuNo' => null,
-            ]);
-            if ($newlyUserDetail) {
-                DB::commit();
-                return $newlyUser;
-            }
+            DB::commit();
+            return $newlyUser;
         }
         DB::rollBack();
         return null;

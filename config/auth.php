@@ -77,7 +77,7 @@ return [
         ],
         'userdetails' => [
             'driver' => 'customDetail',
-            'model' => App\UserDetail::class,
+            'model' => App\User::class,
             'method_to_email_model' => 'person',
         ],
         'admins' => [
