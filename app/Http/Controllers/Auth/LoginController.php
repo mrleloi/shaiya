@@ -61,6 +61,13 @@ class LoginController extends Controller
         }
     }
 
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ])->redirectTo(route('dang-nhap'));
+    }
+
     protected function credentials(Request $request)
     {
         return $request->only($this->username(), $this->password());
