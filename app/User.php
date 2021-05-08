@@ -12,10 +12,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $connection = 'mysql_userdata';
-//    protected $connection = 'sqlsrv_userdata';
-    protected $table = 'users_master';
-//    protected $table = 'dbo.Users_Master';
+//    protected $connection = 'mysql_userdata';
+    protected $connection = 'sqlsrv_userdata';
+//    protected $table = 'users_master';
+    protected $table = 'dbo.Users_Master';
     protected $primaryKey = 'UserUID';
     protected $guarded = [];
     public $timestamps = false;
