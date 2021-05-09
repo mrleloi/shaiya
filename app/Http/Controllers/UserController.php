@@ -61,7 +61,7 @@ class UserController extends Controller
 
         $validatedData = $request->validate([
             'current-email' => 'required',
-            'Email' => 'required|string|email|max:255|unique:sqlsrv_userdata.Users_Detail'
+            'Email' => 'required|string|email|max:255|unique:sqlsrv_userdata.Users_Master'
         ]);
 
         $userDetail->Email = $request->get('Email');

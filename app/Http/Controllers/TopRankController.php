@@ -19,7 +19,6 @@ class TopRankController extends Controller
         if ($request->has('lm') && in_array(intval($request->lm), [1,2])) $faction = intval($request->lm);
 
         $defaultPageSize = $this->setting->num_display;
-        $defaultPageSize = 1;
         if ($defaultPageSize) {
             $defaultpage = 0;
             $validPageSizes = array($defaultPageSize); // This determines valid values for how many results can be displayed on a page.

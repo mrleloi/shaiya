@@ -18,7 +18,6 @@ class ChienTichController extends Controller
         if ($request->has('pvp') && in_array(intval($request->pvp), [0,1,2,3])) $level = intval($request->pvp);
 
         $defaultPageSize = $this->setting->num_display;
-        $defaultPageSize = 1;
         if ($defaultPageSize) {
             $defaultpage = 0;
             $validPageSizes = array($defaultPageSize); // This determines valid values for how many results can be displayed on a page.

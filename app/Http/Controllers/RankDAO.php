@@ -156,7 +156,6 @@ class RankDAO {
 					LEFT JOIN PS_GameData.dbo.GuildChars gc ON gc.CharID = c.CharID AND gc.Del = 0
 					LEFT JOIN PS_GameData.dbo.Guilds g ON g.GuildID = gc.GuildID
 					WHERE um.Status >= 0
-					AND um.AdminLevel = 0
 					AND c.Level BETWEEN ".$minLevel." AND ".$maxLevel."
 					".$classSQL."
 					".$factionSQL."
