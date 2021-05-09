@@ -43,6 +43,60 @@
         </div>
     </section>
 
+    <section class="sidebox_topvoters topvoter sidebox" style="margin-bottom: 15px; padding-bottom: 0px; margin-top: 15px;">
+        <h4 class="sidebox_title border_box">
+            <i>PvP RANKING</i>
+            <div class="topvoter_desc" style="right: 5px;"><a href="{{ route('chien-tich') }}">Xem toàn bộ</a></div>
+        </h4>
+        <div class="sidebox_body border_box">
+            @if (!$listNavPvpRanking->isEmpty())
+                @foreach ($listNavPvpRanking as $c)
+                    <div class="topvoter_row">
+                        <div class="topvoter_col col_rank">1</div>
+                        <div class="topvoter_col col_name">
+                            {{ htmlspecialchars($c->CharName) }}</div>
+                        <div class="topvoter_col col_vote">
+                            <i>{{ $c->K1 }}</i> kills
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="topvoter_row">
+                    <span class="page-link" aria-hidden="true">Không có người dùng nào được xếp hạng.</span>
+                </div>
+
+            @endif
+
+        </div>
+    </section>
+
+    <section class="sidebox_topvoters topvoter sidebox" style="margin-bottom: 15px; padding-bottom: 0px; margin-top: 15px;">
+        <h4 class="sidebox_title border_box">
+            <i>TOP LEVEL</i>
+            <div class="topvoter_desc" style="right: 5px;"><a href="{{ route('top-rank') }}">Xem toàn bộ</a></div>
+        </h4>
+        <div class="sidebox_body border_box">
+            @if (!$listNavTopLevel->isEmpty())
+                @foreach ($listNavTopLevel as $c)
+                    <div class="topvoter_row">
+                        <div class="topvoter_col col_rank">1</div>
+                        <div class="topvoter_col col_name">
+                            {{ htmlspecialchars($c->CharName) }}</div>
+                        <div class="topvoter_col col_vote">
+                            Lv <i>{{ $c->Level }}</i>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="topvoter_row">
+                    <span class="page-link" aria-hidden="true">Không có người dùng nào được xếp hạng.</span>
+                </div>
+
+            @endif
+
+        </div>
+    </section>
+
     <section class="sidebox_topvoters topvoter sidebox" style="margin-bottom: 15px; padding-bottom: 20px; margin-top: 15px;">
         <div class="card left-row" style="height: 111px;">
             <a href="{{ route('nap-the') }}" title="Nạp thẻ" class="nap-tien"></a>

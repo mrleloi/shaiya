@@ -46,4 +46,22 @@ class ChienTichController extends Controller
                 'list' => $list
             ]);
     }
+
+    public static function getListNav() {
+        $level = 0;
+        $defaultPageSize = 10;
+        $defaultpage = 0;
+
+        $pagingData = array();
+        $pagingData['page'] = $defaultpage;
+        $pagingData['pageSize'] = $defaultPageSize;
+        $pagingData['pageOrder'] = 'K1';
+        $pagingData['pageDirection'] = 'DESC';
+        $pagingData['level'] = $level;
+        $pagingData['class'] = 0;
+        $pagingData['faction'] = 0;
+
+        $rank_DAO = new RankDAO();
+        return $rank_DAO->getCharacterRanks($pagingData);
+    }
 }

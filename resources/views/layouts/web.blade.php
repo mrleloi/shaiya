@@ -113,7 +113,7 @@
                 </li>
 
 
-                <li><a href="{{ route('top-rank') }}" direct="0" class="nav_item type-menu"><span>TOP RANK<i>TOP RANK</i></span></a>
+                <li><a href="{{ route('top-rank') }}" direct="0" class="nav_item type-menu"><span>TOP SERVER<i>TOP SERVER</i></span></a>
                 </li>
 
 
