@@ -64,7 +64,9 @@ class RankDAO {
 		if(isset($criteria['pageOrder']) && !empty($criteria['pageOrder']) && isset($criteria['pageDirection']) && !empty($criteria['pageDirection'])){
 			if($criteria['pageOrder'] == 'KDR'){
 				$criteria['pageOrder'] = 'CASE WHEN (c.K1 = 0 OR c.K2 = 0) THEN 0 ELSE CAST(c.K1/CAST(c.K2 AS decimal(18,2)) AS decimal(18,2)) END';
-			}
+			} else if ($criteria['pageOrder'] == 'LV') {
+                $criteria['pageOrder'] = 'Level';
+            }
 			$pageOrderSQL = "ORDER BY ".$criteria['pageOrder']." ".$criteria['pageDirection'];
 		}else{
 			$pageOrderSQL = "ORDER BY K1 DESC";
