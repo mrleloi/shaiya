@@ -51,7 +51,7 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            $this->username() => 'required|string',
+            $this->username() => 'required|string|alpha_dash',
             $this->password() => 'required|string',
         ]);
         if ($validator->fails()) {

@@ -63,7 +63,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'UserName' => ['required', 'string', 'max:255'],
-            'UserID' => ['required', 'string', 'max:255', 'unique:sqlsrv_userdata.Users_Master'],
+            'UserID' => ['required', 'string', 'max:255', 'unique:sqlsrv_userdata.Users_Master', 'alpha_dash'],
             'Pw' => ['required', 'string', 'min:6', 'max:12'],
             'Pw_confirm' => ['required', 'string', 'min:6', 'max:12', 'same:Pw'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:sqlsrv_userdata.Users_Master'],
