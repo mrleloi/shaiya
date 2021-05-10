@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\SettingTopRank;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,10 @@ class TopRankController extends Controller
     {
         $faction = 0;
         $level = 0;
-        if ($request->has('lm') && in_array(intval($request->lm), [1,2])) $faction = intval($request->lm);
+        if ($request->has('lm') && in_array(intval(Helper::clearXSS($request->lm)), [1,2])) $faction = intval(Helper::clearXSS($request->lm));
 
         $type = 0;
-        if ($request->has('type') && in_array(intval($request->type), [1,2])) $type = intval($request->type);
+        if ($request->has('type') && in_array(intval(Helper::clearXSS($request->type), [1,2]))) $type = intval(Helper::clearXSS($request->type));
 
         $rank_DAO = new RankDAO();
         $defaultPageSize = $this->setting->num_display;
@@ -32,16 +33,16 @@ class TopRankController extends Controller
             // Gather valid user input from the user's POST request
             $pagingData = array();
             if ($type == 1) {
-                $pagingData['page'] = isset($_REQUEST['page']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['page'])) && $_REQUEST['page'] >= 0 ? $_REQUEST['page'] : $defaultpage;
+                $pagingData['page'] = isset($_REQUEST['page']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['page'])) && $_REQUEST['page'] >= 0 ? Helper::clearXSS($_REQUEST['page']) : Helper::clearXSS($defaultpage);
             } else {
                 $pagingData['page'] = 0;
             }
-            $pagingData['pageSize'] = isset($_REQUEST['pageSize']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['pageSize'])) && in_array($_REQUEST['pageSize'],$validPageSizes) ? $_REQUEST['pageSize'] : $defaultPageSize;
-            $pagingData['pageOrder'] = isset($_REQUEST['pageOrder']) && !empty($_REQUEST['pageOrder']) && in_array($_REQUEST['pageOrder'],$validOrderBys) ? $_REQUEST['pageOrder'] : 'K1';
-            $pagingData['pageDirection'] = isset($_REQUEST['pageDirection']) && !empty($_REQUEST['pageDirection']) && in_array($_REQUEST['pageDirection'],$validPageDirections) ? $_REQUEST['pageDirection'] : 'DESC';
+            $pagingData['pageSize'] = isset($_REQUEST['pageSize']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['pageSize'])) && in_array($_REQUEST['pageSize'],$validPageSizes) ? Helper::clearXSS($_REQUEST['pageSize']) : Helper::clearXSS($defaultPageSize);
+            $pagingData['pageOrder'] = isset($_REQUEST['pageOrder']) && !empty($_REQUEST['pageOrder']) && in_array($_REQUEST['pageOrder'],$validOrderBys) ? Helper::clearXSS($_REQUEST['pageOrder']) : 'K1';
+            $pagingData['pageDirection'] = isset($_REQUEST['pageDirection']) && !empty($_REQUEST['pageDirection']) && in_array($_REQUEST['pageDirection'],$validPageDirections) ? Helper::clearXSS($_REQUEST['pageDirection']) : 'DESC';
 
             $pagingData['level'] = $level;
-            $pagingData['class'] = isset($_REQUEST['class']) && (!empty($_REQUEST['class']) || is_numeric($_REQUEST['class'])) ? $_REQUEST['class'] : 0;
+            $pagingData['class'] = isset($_REQUEST['class']) && (!empty($_REQUEST['class']) || is_numeric($_REQUEST['class'])) ? Helper::clearXSS($_REQUEST['class']) : 0;
             $pagingData['faction'] = $faction;
 
             $listType1 = $rank_DAO->getCharacterRanks($pagingData);
@@ -54,16 +55,16 @@ class TopRankController extends Controller
             // Gather valid user input from the user's POST request
             $pagingData = array();
             if ($type == 2) {
-                $pagingData['page'] = isset($_REQUEST['page']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['page'])) && $_REQUEST['page'] >= 0 ? $_REQUEST['page'] : $defaultpage;
+                $pagingData['page'] = isset($_REQUEST['page']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['page'])) && $_REQUEST['page'] >= 0 ? Helper::clearXSS($_REQUEST['page']) : Helper::clearXSS($defaultpage);
             } else {
                 $pagingData['page'] = 0;
             }
-            $pagingData['pageSize'] = isset($_REQUEST['pageSize']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['pageSize'])) && in_array($_REQUEST['pageSize'],$validPageSizes) ? $_REQUEST['pageSize'] : $defaultPageSize;
+            $pagingData['pageSize'] = isset($_REQUEST['pageSize']) && (!empty($_REQUEST['page']) && is_numeric($_REQUEST['pageSize'])) && in_array($_REQUEST['pageSize'],$validPageSizes) ? Helper::clearXSS($_REQUEST['pageSize']) : Helper::clearXSS($defaultPageSize);
             $pagingData['pageOrder'] = 'LV';
-            $pagingData['pageDirection'] = isset($_REQUEST['pageDirection']) && !empty($_REQUEST['pageDirection']) && in_array($_REQUEST['pageDirection'],$validPageDirections) ? $_REQUEST['pageDirection'] : 'DESC';
+            $pagingData['pageDirection'] = isset($_REQUEST['pageDirection']) && !empty($_REQUEST['pageDirection']) && in_array($_REQUEST['pageDirection'],$validPageDirections) ? Helper::clearXSS($_REQUEST['pageDirection']) : 'DESC';
 
             $pagingData['level'] = $level;
-            $pagingData['class'] = isset($_REQUEST['class']) && (!empty($_REQUEST['class']) || is_numeric($_REQUEST['class'])) ? $_REQUEST['class'] : 0;
+            $pagingData['class'] = isset($_REQUEST['class']) && (!empty($_REQUEST['class']) || is_numeric($_REQUEST['class'])) ? Helper::clearXSS($_REQUEST['class']) : 0;
             $pagingData['faction'] = $faction;
 
             $listType2 = $rank_DAO->getCharacterRanks($pagingData);

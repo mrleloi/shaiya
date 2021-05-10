@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -84,9 +85,9 @@ class RegisterController extends Controller
         $newUserUID = $maxUserUID + 1;
 
         $newlyUser = User::create([
-            //'UserUID' => $newUserUID,
-            'UserID' => $data['UserID'],
-            'Pw' => $data['Pw'],
+            'UserUID' => $newUserUID,
+            'UserID' => Helper::clearXSS($data['UserID']),
+            'Pw' => Helper::clearXSS($data['Pw']),
             'JoinDate' => now(),
             //'Admin' => 0,
             //'AdminLevel' => 0,
@@ -101,7 +102,7 @@ class RegisterController extends Controller
             'Point' => 0,
             //'Enpassword' => null,
             //'Birth' => null,
-            'Email' => $data['email'],
+            'Email' => Helper::clearXSS($data['email']),
         ]);
         if ($newlyUser) {
             DB::commit();
