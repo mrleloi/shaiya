@@ -20,7 +20,7 @@ class TopRankController extends Controller
         if ($request->has('lm') && in_array(intval(Helper::clearXSS($request->lm)), [1,2])) $faction = intval(Helper::clearXSS($request->lm));
 
         $type = 0;
-        if ($request->has('type') && in_array(intval(Helper::clearXSS($request->type), [1,2]))) $type = intval(Helper::clearXSS($request->type));
+        if ($request->has('type') && in_array(intval(Helper::clearXSS($request->type)), [1,2])) $type = intval(Helper::clearXSS($request->type));
 
         $rank_DAO = new RankDAO();
         $defaultPageSize = $this->setting->num_display;
