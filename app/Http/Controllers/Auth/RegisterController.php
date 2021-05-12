@@ -85,7 +85,7 @@ class RegisterController extends Controller
         $newUserUID = $maxUserUID + 1;
 
         $newlyUser = User::create([
-            'UserUID' => $newUserUID,
+            //'UserUID' => $newUserUID,
             'UserID' => Helper::clearXSS($data['UserID']),
             'Pw' => Helper::clearXSS($data['Pw']),
             'JoinDate' => now(),
